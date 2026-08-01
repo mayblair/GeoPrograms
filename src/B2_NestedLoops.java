@@ -1,4 +1,4 @@
-public class B2_TeachMeNestedLoops extends World {
+public class B2_NestedLoops extends World {
 
    public void go() {
       System.out.println("This will be printed to the  window. ");

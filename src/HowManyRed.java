@@ -6,7 +6,7 @@ public class HowManyRed extends World {
     public int total;
 
     public void go() {
-        System.out.println("This will be printed to the  window. ");
+        System.out.println("Run this script to discover its function.");
         plane.teleport(0, 0);
         plane.loadBackGround("waldobig.png");
         plane.showBackGround();

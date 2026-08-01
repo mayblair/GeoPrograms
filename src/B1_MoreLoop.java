@@ -13,9 +13,9 @@ public class B1_MoreLoop extends World {
 
     public void square(int distance) {
         for (int z = 0; z < 4; z=z+1){
-            plane.isTrail = true;
+            plane.hasTrail = true;
             plane.move(distance);
-            plane.turn(90);
+            plane.turnLeft(90);
             System.out.println("z: " + z);
         }
     }
