@@ -15,11 +15,13 @@ public class B4_IfThen extends World {
             blue  = plane.howMuchBlue();
 
             plane.setPixelColor(red, green, blue);
-            if(red>140 && red<210 && green >210 && blue>210) {
-                plane.setPixelColor(250, 185, 222);
+            if (red > 140 && red < 210) {
+                if (green > 210 && blue > 210) {
+                    plane.setPixelColor(250, 185, 222);
+                }
             }
 
-            if(red>240 && green>240 && x>650 && x<870 && y>280 && y<370){
+            if (red>240 && green>240 && x>650 && x<870 && y>280 && y<370) {
                plane.setPixelColor(255,0,0);
             }
          }

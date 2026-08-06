@@ -8,7 +8,6 @@ public class A7_Review extends World {
      */
 
     public void go() {
-
         plane.pausetime = 0; // sets a variable in the Robot class so program pauses for that number of milliseconds. 0 = no pause
 
         sizeoftree = 50;     // Assigns the value of 50 to sizeoftree - now the variable that we made above has a value
@@ -18,10 +17,10 @@ public class A7_Review extends World {
 
         plane.teleport(200, 300);    // Moves plane to the coordinate (200,300)
         // remember that (0,0) is in the top left of the applet
-        ///  FIX ME!!!
+        plane.setAngle(90);
         plane.house(100);        // uses a method from the Robot class to have plane draw a house of size 100
 
-        plane.teleport(374, 274);
+        plane.teleport(354, 254);
         plane.setTrailColor(0, 210, 10);
         //Every color that you see on this screen is made from the three colors, red, green, and blue.
         plane.fillCircle( sizeoftree / 2);    // uses fillCircle method to draw a shaded circle of size 25

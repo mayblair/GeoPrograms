@@ -264,12 +264,12 @@ public class Robot {
     /**
      * plane.setPos( 111,20); will move the robot to the location (111,20)
      */
-    public void setPos(int x, int y) {
+    public void setPosition(int x, int y) {
         xpos = x;
         ypos = y;
     }
 
-    public void setPos(double x, double y) {
+    public void setPosition(double x, double y) {
         xpos = x;
         ypos = y;
     }
