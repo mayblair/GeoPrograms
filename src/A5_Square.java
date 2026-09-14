@@ -7,6 +7,7 @@ public class A5_Square extends World {
 
         plane.setAngle(90);
         square();
+        // square();
     }
 
 
@@ -21,8 +22,7 @@ public class A5_Square extends World {
         plane.move(111);
         plane.turnLeft(90);
         plane.move(111);
-        //notice this final turn "resets" the plane to its original position
-        plane.turnLeft(90);
+        // notice the direction your plane is facing at this point
     }
 
 }

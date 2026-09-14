@@ -1,4 +1,4 @@
-public class B3_HalfTheRed extends World {
+public class B4_HalfTheRed extends World {
     public int red;
     public int blue;
     public int green;

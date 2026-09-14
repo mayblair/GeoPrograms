@@ -1,4 +1,4 @@
-public class AA_MyCode extends World{
+public class A_Blank extends World{
 
     public void go() {
 

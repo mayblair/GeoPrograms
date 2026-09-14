@@ -1,4 +1,4 @@
-public class B1_MoreLoop extends World {
+public class B2_MoreLoop extends World {
 
     public void go() {
         plane.pausetime = 1;

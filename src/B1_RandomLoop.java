@@ -1,25 +1,40 @@
-public class A6_House extends World {
+public class B1_RandomLoop extends World {
+
+    public int randNum;
 
     public void go() {
         plane.hasTrail = true;
-        plane.pausetime = 0;
-        house();
-        plane.hasTrail = false;
-        plane.move(75);
+        plane.pausetime = 2 ;
+
+        for (int i = 0; i < 15; i = i+1) {
+            plane.teleport(i * 100, 400);
+            randNum = plane.random(0, 3);
+            if (randNum == 0) {
+                square();
+            }
+            if (randNum == 1) {
+                rectangle(200, 100);
+            }
+            if (randNum == 2) {
+                rectangle(60, 100);
+            }
+        }
     }
 
-    public void big() {
-        plane.move(111);
+    public void square() {
+        plane.setAngle(90);
+        plane.move(100);
         plane.turnLeft(90);
-        plane.move(111);
+        plane.move(100);
         plane.turnLeft(90);
-        plane.move(111);
+        plane.move(100);
         plane.turnLeft(90);
-        plane.move(111);
+        plane.move(100);
         plane.turnLeft(90);
     }
 
-    public void small(int a, int b) {
+    public void rectangle(int a, int b) {
+        plane.setAngle(90);
         plane.move(a);
         plane.turnLeft(90);
         plane.move(b);
@@ -39,12 +54,6 @@ public class A6_House extends World {
         plane.teleport(200,400);
         plane.setAngle(0);
         equitriangle(50);
-        plane.hasTrail = false;
-        plane.setAngle(270);
-        plane.move(200);
-        plane.hasTrail = true;
-        plane.pausetime = 0;
-        sun(20);
     }
 
     public void square(int a) {
@@ -67,10 +76,6 @@ public class A6_House extends World {
         plane.turnLeft(120);
     }
 
-    public void rectangle(int a, int b) {
-
-
-    }
 
     public void fillRec(int a, int b) {
 
