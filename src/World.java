@@ -51,12 +51,15 @@ public class World extends JFrame implements Runnable, KeyListener, MouseMotionL
     public double theta = 0;
 
     Thread thread;
+    public boolean running = true;
 
 
     public void loadBackGround(String imgname) {
         loadFile = new File("images/" + imgname);
         try {
             image = ImageIO.read(loadFile);    // get the image from loadFile and put it into variable image
+            backHeight = image.getHeight(null);    // get the dimensions of the background image
+            backWidth = image.getWidth(null);
         } catch (IOException e) {
             System.out.println("wrong file type");
         }
@@ -178,7 +181,7 @@ public class World extends JFrame implements Runnable, KeyListener, MouseMotionL
 
     public void run() {
 
-        while (true) {
+        while (running) {
             render();
             try {
                 Thread.sleep(5);
@@ -186,6 +189,7 @@ public class World extends JFrame implements Runnable, KeyListener, MouseMotionL
 
             }
         }
+
     }
 
 

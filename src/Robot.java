@@ -78,13 +78,7 @@ public class Robot {
     }
 
     public void loadBackGround(String imgname) {
-        myWorld.loadFile = new File("images/" + imgname);
-        try {
-            // get the image from loadFile and put it into variable image
-            myWorld.image = ImageIO.read(myWorld.loadFile);
-        } catch (IOException e) {
-            System.out.println("wrong file type");
-        }
+        myWorld.loadBackGround(imgname);
     }
 
     // COLOR SETTING AND GETTING
@@ -237,7 +231,6 @@ public class Robot {
 
     }
 
-    //this method currently DOES NOT use the moveIt thread
     public void move(double distance) {
         int w = (int) distance;
         //System.out.println("move");
