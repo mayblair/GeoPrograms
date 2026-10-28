@@ -14,9 +14,9 @@ public class Robot {
     // DY is a real number used for how large a step the Robot takes in the y direction
     public double DY = 0;
     // width is how wide the image that represents the Robot is
-    public int width;
+    protected int width;
     // height represents how tall the Robot is
-    public int height;
+    protected int height;
     // isAlive is currently not used in the program, but is often used in other implementations of Robot
     boolean isAlive;
 

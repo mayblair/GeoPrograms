@@ -36,6 +36,7 @@ public class World extends JFrame implements Runnable, KeyListener, MouseMotionL
     public Canvas canvas;
     public BufferStrategy bufferStrategy;
     public BufferedImage image;
+    private GraphicsConfiguration lastGraphicsConfiguration;
 
     private int xpos = 470;
     private int ypos = 310;
@@ -65,19 +66,44 @@ public class World extends JFrame implements Runnable, KeyListener, MouseMotionL
         }
     }
 
-    public void render() {
+    public synchronized void render() {
 
+        if (canvas == null || !canvas.isShowing()) {
+            return;
+        }
+
+        GraphicsConfiguration currentConfiguration = canvas.getGraphicsConfiguration();
+
+        // Rebuild the screen buffers when moving to a different monitor.
+        if (bufferStrategy == null || currentConfiguration != lastGraphicsConfiguration) {
+            canvas.createBufferStrategy(2);
+            bufferStrategy = canvas.getBufferStrategy();
+            lastGraphicsConfiguration = currentConfiguration;
+        }
         Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
         g.clearRect(0, 0, WIDTH, HEIGHT);
-
         if (showBack) {
             g.drawImage(image, 0, 0, backWidth, backHeight, null);
         }
         g.drawImage(trail, 0, 0, WIDTH, HEIGHT, null);
         rotateImage();
-        g.drawImage(planePic, trans, null );
+        g.drawImage(planePic, trans, null);
         g.dispose();
         bufferStrategy.show();
+        while (bufferStrategy.contentsLost()) {
+            while (bufferStrategy.contentsRestored()) {
+
+                g.clearRect(0, 0, WIDTH, HEIGHT);
+                if (showBack) {
+                    g.drawImage(image, 0, 0, backWidth, backHeight, null);
+                }
+                g.drawImage(trail, 0, 0, WIDTH, HEIGHT, null);
+                rotateImage();
+                g.drawImage(planePic, trans, null);
+                g.dispose();
+            }
+            bufferStrategy.show();
+        }
     }
 
     public void Refresh() {
@@ -184,19 +210,21 @@ public class World extends JFrame implements Runnable, KeyListener, MouseMotionL
         while (running) {
             render();
             try {
-                Thread.sleep(5);
+                Thread.sleep(15);
             } catch (InterruptedException e) {
 
             }
         }
-
     }
 
 
     public void keyPressed(KeyEvent event) {
-        String keyin; // define a non-public variable to hold the string representing the key input
-        keyin = "" + event.getKeyText(event.getKeyCode()); //getKeyCode returns the key code, then change it to a String.
+        int key = event.getKeyCode();
+        String keyin = "" + event.getKeyText(key); //getKeyCode returns the key code, then change it to a String.
         System.out.println("Key pressed " + keyin);
+        if (key == 27) {
+            running = false;
+        }
     }
 
     public void keyReleased(KeyEvent event) {
